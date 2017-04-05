@@ -8,6 +8,7 @@ public class Gensine extends ModuleAbstract {
 		super("Generateur sinusoidal",0,1);
 		this.indiceTemps=0;
 		this.f=f;
+		this.amp = amp;
 	}
 	
 	@Override 

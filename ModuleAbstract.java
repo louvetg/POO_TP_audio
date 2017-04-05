@@ -72,8 +72,8 @@ abstract class ModuleAbstract {
 		output.setInputPortValue(numOutput,this.getInputPortValue(numInput));
 	}
 	
-	static Connexion connect(ModuleAbstract input,int idOutputPort,ModuleAbstract output,int idInputPort ){
-		Connexion connecte = new Connexion(input.inputPorts[idOutputPort],output.outputPorts[idInputPort]);
+	static Connexion connect(ModuleAbstract down,int idDownPort,ModuleAbstract up,int idUpPort ){
+		Connexion connecte = new Connexion(up.inputPorts[idUpPort],down.outputPorts[idDownPort]);
 		return connecte;
 	}
 	

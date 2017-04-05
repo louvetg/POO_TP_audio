@@ -5,8 +5,8 @@ public class Connexion {
 	private CommunicationPorts downModulePort;
 	
 	public Connexion(CommunicationPorts upModulePort, CommunicationPorts downModulePort ) {
-		this.upModulePort = new CommunicationPorts(upModulePort.getModule(),upModulePort.getportNumber());
-		this.downModulePort = new CommunicationPorts(downModulePort.getModule(),downModulePort.getportNumber());
+		this.upModulePort = new CommunicationPorts(upModulePort.getModule(),upModulePort.getPortNumber());
+		this.downModulePort = new CommunicationPorts(downModulePort.getModule(),downModulePort.getPortNumber());
 		upModulePort.setConnexion(this);
 		downModulePort.setConnexion(this);
 	}

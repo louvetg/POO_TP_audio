@@ -42,11 +42,11 @@ public class CommunicationPorts {
 		return this.possesseur;
 	}
 	
-	public void  setportNumber(int portNumber){
+	public void  setPortNumber(int portNumber){
 		this.portNumber=portNumber;
 	}
 	
-	public int  getportNumber(){
+	public int  getPortNumber(){
 		return this.portNumber;
 	}
 }
