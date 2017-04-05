@@ -26,6 +26,10 @@ public class Connexion {
 	public void setdownModulePort (CommunicationPorts a) {
 		this.downModulePort=a;
 	}
+
+	public void communicate(){
+		this.upModulePort.setValue(this.downModulePort.getvalue()); 	
+	}
 	
 }
 
