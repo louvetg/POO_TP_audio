@@ -4,15 +4,28 @@ abstract class ModuleAbstract {
 	
 	final int SAMPLE_FREQ = 44100;
 	private String nom;
-	CommunicationPorts[] inputPorts;
-	CommunicationPorts[] outputPorts;
+	private CommunicationPorts[] inputPorts;
+	private CommunicationPorts[] outputPorts;
 	
 	/**Constructeur*/
 	
 	public ModuleAbstract(String nom,int nbInput,int nbOutput) {
 		this.nom=nom;
-		inputPorts = new CommunicationPorts[nbInput];
+		if (nbInput == 0 ) {
+			inputPorts = null ; 
+		}
+		else {
+			inputPorts = new CommunicationPorts[nbInput];
+			for(int i =0;i<nbInput;i++) {
+				inputPorts[i] = new CommunicationPorts(this,i);
+			}
+		}
+
 		outputPorts = new CommunicationPorts[nbOutput];
+		for(int j =0;j<nbOutput;j++) {
+			outputPorts[j] = new CommunicationPorts(this,j);
+		}
+		
 	}
 	
 	/**Accesseur*/
@@ -40,6 +53,13 @@ abstract class ModuleAbstract {
 		return this.inputPorts[idInputPort].getvalue();
 	}
 	
+	public CommunicationPorts getInputCommunicationPortsnum(int x) { 
+		return this.inputPorts[x];
+	}
+	
+	public CommunicationPorts getOutputCommunicationPortsnum(int x) { 
+		return this.outputPorts[x];
+	}
 
 	
 	/**
@@ -73,12 +93,14 @@ abstract class ModuleAbstract {
 	}
 	
 	static Connexion connect(ModuleAbstract down,int idDownPort,ModuleAbstract up,int idUpPort ){
-		Connexion connecte = new Connexion(up.inputPorts[idUpPort],down.outputPorts[idDownPort]);
+		Connexion connecte = new Connexion(down.outputPorts[idDownPort],up.inputPorts[idUpPort]);
 		return connecte;
 	}
 	
 	/**Mutateur*/
 	
 	abstract void exec();
+	
+	
 	
 }

@@ -6,9 +6,18 @@ public class CommunicationPorts {
 	private Connexion connexion;
 	private double value;
 	
-	public CommunicationPorts(ModuleAbstract possesseur, int portNumber){
-		this.possesseur = possesseur;
-		this.portNumber = portNumber;
+	public CommunicationPorts(ModuleAbstract a,int x) {
+		
+		this.possesseur = a ;
+		this.portNumber = x ; 
+		this.connexion = null ;
+		this.value = 0;
+		
+	}
+	
+	public CommunicationPorts(CommunicationPorts a){
+		this.possesseur = a.getModule();
+		this.portNumber = a.getPortNumber();
 		this.connexion = null;
 		this.value = 0;
 	}

@@ -4,11 +4,11 @@ public class Connexion {
 	private CommunicationPorts upModulePort;
 	private CommunicationPorts downModulePort;
 	
-	public Connexion(CommunicationPorts upModulePort, CommunicationPorts downModulePort ) {
-		this.upModulePort = new CommunicationPorts(upModulePort.getModule(),upModulePort.getPortNumber());
-		this.downModulePort = new CommunicationPorts(downModulePort.getModule(),downModulePort.getPortNumber());
-		upModulePort.setConnexion(this);
-		downModulePort.setConnexion(this);
+	public Connexion(CommunicationPorts downModulePort, CommunicationPorts upModulePort ) {
+		this.upModulePort = upModulePort;
+		this.downModulePort = downModulePort;
+		this.upModulePort.setConnexion(this);
+		this.downModulePort.setConnexion(this);
 	}
 	
 	public CommunicationPorts getupModulePort(){
@@ -26,10 +26,11 @@ public class Connexion {
 	public void setdownModulePort (CommunicationPorts a) {
 		this.downModulePort=a;
 	}
-
+	
 	public void communicate(){
-		this.upModulePort.setValue(this.downModulePort.getvalue()); 	
+		this.upModulePort.setValue(this.downModulePort.getvalue());
 	}
+
 	
 }
 
